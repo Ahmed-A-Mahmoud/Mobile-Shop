@@ -1,0 +1,31 @@
+  .tabs{
+      width: 50%;
+      text-align: center
+  }
+  input {
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: black;
+    border-bottom-style: solid;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    display: block;
+    width: 100%
+  }
+  input:focus {
+    border-color: steelblue
+  }
+  .submit-button{
+    background-color: green;
+    border-color: green;
+    color: white;
+    border-radius: 15px;
+    width: 40%
+  }
+  .clear-button{
+    background-color: red;
+    border-color: red;
+    color: white;
+    border-radius: 15px;
+    width: 40%
+  }

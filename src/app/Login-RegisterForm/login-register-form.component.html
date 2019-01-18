@@ -1,0 +1,106 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <br>
+            <br>
+            <ul class="nav nav-tabs">
+                <li class="tabs" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                    <a data-toggle="tab" routerLink="/login-register/login">
+                        <h4>Login</h4>
+                    </a>
+                </li>
+                <li class="tabs" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                    <a data-toggle="tab" routerLink="/login-register/register">
+                        <h4>Register</h4>
+                    </a>
+                </li>
+            </ul>
+            <br>
+            <div *ngIf="route.snapshot.params['tab'] === 'login'">
+                <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    {{ errorMessage }}
+                </div>
+                <form (ngSubmit)="onLogin()" #loginform="ngForm">
+                    <div class="form-group">
+                        <label for="email">
+                            <h4><b>E-mail</b></h4>
+                        </label>
+                        <input type="email" ngModel name="login email" required email #loginemail="ngModel" placeholder="example@example.com">
+                        <div class="alert alert-danger" role="alert" *ngIf="loginemail.invalid && loginemail.touched">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <strong> Oops!</strong> Your e-mail address doesn't look correct
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Password">
+                            <h4><b>Password</b></h4>
+                        </label>
+                        <input type="password" ngModel name="login password" required>
+                    </div>
+                    <button class="btn submit-button" type="submit" [disabled]="loginform.invalid">Log in</button>
+                    <button class="btn clear-button pull-right" type="clear">Clear</button>
+                </form>
+            </div>
+            <div *ngIf="route.snapshot.params['tab'] === 'register'">
+                <form (ngSubmit)="onRegistration()" #registrationform="ngForm">
+                    <div class="form-group">
+                        <label for="firstname">
+                            <h4><b>*First name</b></h4>
+                        </label>
+                        <input type="text" ngModel name="firstname" required placeholder="Ahmed">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">
+                            <h4><b>*Last name</b></h4>
+                        </label>
+                        <input type="text" ngModel name="lastname" required placeholder="Shalaby">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">
+                            <h4><b>Address</b></h4>
+                        </label>
+                        <input type="text" ngModel name="address">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">
+                            <h4><b>Phone</b></h4>
+                        </label>
+                        <input type="text" pattern="[0-9]{10,}$" ngModel name="phone" #registrationphone="ngModel" placeholder="01234567890">
+                        <div class="alert alert-danger" role="alert" *ngIf="registrationphone.invalid && registrationphone.touched">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <strong> Warning!</strong> Phone must contain at least 10 digits
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">
+                            <h4><b>*E-mail</b></h4>
+                        </label>
+                        <input type="email" ngModel name="registration email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                            #registrationemail="ngModel" placeholder="example@example.com">
+                        <div class="alert alert-danger" role="alert" *ngIf="registrationemail.invalid && registrationemail.touched">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <strong> Oops!</strong> Your e-mail address doesn't look correct
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Password">
+                            <h4><b>*Password</b></h4>
+                        </label>
+                        <input type="password" ngModel name="registration password" minlength="6" required
+                            #registrationpassword="ngModel">
+                        <div class="alert alert-info" role="alert" *ngIf="registrationpassword.invalid">
+                            <strong> Note:</strong> Password must contain at least 6 characters
+                        </div>
+                    </div>
+                    <button class="btn submit-button" type="submit" [disabled]="registrationform.invalid">Register</button>
+                    <button class="btn clear-button pull-right" type="clear">Clear</button>
+                    <br>
+                    <br>
+                    <p style="text-align:center">Required fields are marked with (<b>*</b>)</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

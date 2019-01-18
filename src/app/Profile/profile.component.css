@@ -1,0 +1,38 @@
+.table-title{
+    background-color: black;
+    color: green;
+    font-size: 20px
+}
+button{
+    background-color: green;
+    color: white;
+    border: 3px solid green;
+    border-radius: 15px
+}
+button.center-block{
+    background-color: green;
+    color: white;
+    border: 3px solid green;
+    border-radius: 15px
+}
+td:not(img).text-center{
+    transform: translateY(30%)
+}
+img{
+    width: 80px;
+    height: 106px;
+    text-align: center
+}
+a{
+    cursor: pointer;
+}
+.tabs{
+    width: 50%;
+    text-align: center
+}
+.submit-button{
+    background-color: green;
+    border-color: green;
+    color: white;
+    border-radius: 15px
+}

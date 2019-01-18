@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div class="row">
+    <div *ngFor="let smartphone of smartphones">
+      <div class="col-sm-3">
+        <div class="thumbnail border">
+          <a (click)="onPhoneViewed(smartphone)">
+            <img src="{{ smartphone.img_url }}">
+            <div class=" caption">
+              <div class="text-center">
+                <h3>{{ smartphone.brand + ' ' + smartphone.model }}</h3>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

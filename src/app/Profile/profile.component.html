@@ -1,0 +1,78 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-3">
+      <h4><b>Name</b></h4>
+      <p>{{user.Firstname}} {{user.Lastname}}</p>
+      <h4><b>Address</b></h4>
+      <p>{{user.Address}}</p>
+      <button routerLink="/" *ngIf="!user.Address">Add Address</button>
+      <h4><b>Phone</b></h4>
+      <button routerLink="/" *ngIf="!user.Phone">Add Phone</button>
+      <p>{{user.Phone}}</p>
+      <h4><b>E-mail</b></h4>
+      <p>{{user.Email}}</p>
+    </div>
+    <div class="col-xs-3">
+      <br>
+      <br>
+      <br>
+      <br>
+      <button (click)="manageWallet()" class="center-block">
+        <h1>{{user.Wallet}}€</h1>
+      </button>
+      <br>
+      <div *ngIf="isWalletManaged">
+        <div class="col-xs-3">
+          <form (ngSubmit)="onDeposit()" #depositform="ngForm">
+            <div class="form-group">
+              <label for="deposit value">
+                <b>Deposit value</b>
+              </label>
+              <input type="text" size="6" pattern="[1-9]{1}[0-9]{1,}$" ngModel name="deposit value" required
+                #depositvalue="ngModel">
+              <br>
+              <br>
+              <button class="btn submit-button" type="submit" [disabled]="depositform.invalid">Deposit</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-xs-3"></div>
+        <div class="col-xs-3">
+          <form (ngSubmit)="onWithdraw()" #withdrawform="ngForm">
+            <div class="form-group">
+              <label for="withdraw value">
+                <b>Withdraw value</b>
+              </label>
+              <input type="text" size="6" pattern="[1-9]{1}[0-9]{1,}$" ngModel name="withdraw value" required
+                #withdrawvalue="ngModel">
+              <br>
+              <br>
+              <button class="btn submit-button" type="submit" [disabled]="withdrawform.invalid">Withdraw</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-6" *ngIf="user.Purchases">
+      <table class="table table-bordered table-responsive">
+        <tr>
+          <th class="table-title text-center" colspan="4">Purchases</th>
+        </tr>
+        <tr>
+          <th class="text-center">Image</th>
+          <th class="text-center">Item</th>
+          <th class="text-center">Price</th>
+        </tr>
+        <tr *ngFor="let purchase of user.Purchases">
+          <td style="text-align: center">
+            <a (click)="onPhoneViewed(smartphone)">
+              <img src="{{purchase.img_url}}">
+            </a>
+          </td>
+          <td class="text-center">{{purchase.brand}} {{purchase.model}}</td>
+          <td class="text-center">{{purchase.price}}€</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
