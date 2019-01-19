@@ -13,7 +13,7 @@ export class SmartphoneDetailsComponent implements OnInit {
   smartphone: Smartphone;
   userWallet: number;
   userstatus: string;
-  constructor(private shareService: SharingService, private afDatabase: AngularFireDatabase, private router: Router) { }
+  constructor(public shareService: SharingService, public afDatabase: AngularFireDatabase, public router: Router) { }
 
   ngOnInit() {
     this.smartphone = this.shareService.getData("selectedSmartphone")

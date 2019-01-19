@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private _location: Location, private router: Router, private shareService: SharingService) { }
+  constructor(public _location: Location, public router: Router, public shareService: SharingService) { }
   ngOnInit() {    
   }
   onBackClicked() {

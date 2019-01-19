@@ -24,7 +24,7 @@ export class LoginRegisterFormComponent implements OnInit {
   isLoggedin = false;
   isSubmitted = false;
   errorMessage = ''
-  constructor(private route: ActivatedRoute, private afDatabase: AngularFireDatabase, private shareService: SharingService, private router: Router) { }
+  constructor(public route: ActivatedRoute, public afDatabase: AngularFireDatabase, public shareService: SharingService, public router: Router) { }
   ngOnInit() {
   }
   Login() {

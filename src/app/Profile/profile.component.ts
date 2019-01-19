@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   isWalletManaged = false;
   showAddressFrom = false;
   showPhoneFrom = false;
-  constructor(private shareService: SharingService, private afDatabase: AngularFireDatabase, private router: Router) { }
+  constructor(public shareService: SharingService, public afDatabase: AngularFireDatabase, public router: Router) { }
   ngOnInit() {
     this.userSubscription = this.afDatabase.object(`Users/Regular/${this.shareService.getData("userId")}`).snapshotChanges().subscribe(userdata => {
       if (userdata.payload.exists()) {

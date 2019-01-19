@@ -15,13 +15,11 @@ export class SmartphonesThumbnailsComponent implements OnInit, OnDestroy {
   filteredsmartphones: Array<Smartphone> = [];
   smartphoneSubscription: Subscription
   brands = []
-  constructor(private afDatabase: AngularFireDatabase, private router: Router, private shareService: SharingService) { }
+  constructor(public afDatabase: AngularFireDatabase, public router: Router, public shareService: SharingService) { }
   ngOnInit() {
     this.smartphoneSubscription = this.afDatabase.object('Smartphones').snapshotChanges().subscribe(smartphonesSnapshot => {
       this.smartphones = <Smartphone[]>smartphonesSnapshot.payload.val()
       this.smartphones.forEach(smartphone=>{
-        console.log(smartphone.brand);
-        
       })
       this.filteredsmartphones = this.smartphones
     })

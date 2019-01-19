@@ -8,7 +8,7 @@ import { AngularFireDatabase } from 'angularfire2/database'
 })
 export class AppComponent {
 
-  constructor(private afDatabase: AngularFireDatabase) {
+  constructor(public afDatabase: AngularFireDatabase) {
     
   }
 }
