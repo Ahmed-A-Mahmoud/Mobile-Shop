@@ -4,6 +4,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import * as firebase from 'firebase'
+import { User } from '../Models/user.model';
 
 @Component({
   selector: 'app-login-register-form',
@@ -13,14 +14,7 @@ import * as firebase from 'firebase'
 export class LoginRegisterFormComponent implements OnInit {
   @ViewChild('loginform') loginForm: NgForm;
   @ViewChild('registrationform') registrationForm: NgForm;
-  user = {
-    Firstname: '',
-    Lastname: '',
-    Address: '',
-    Phone: '',
-    Email: '',
-    Wallet: 0
-  };
+  user : User;
   isLoggedin = false;
   isSubmitted = false;
   errorMessage = ''

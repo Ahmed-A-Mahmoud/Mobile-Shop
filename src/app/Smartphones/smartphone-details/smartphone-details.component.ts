@@ -42,11 +42,11 @@ export class SmartphoneDetailsComponent implements OnInit {
             purchases.ref.child("0").set(purchase)
           }
         })
-        console.log("Purchase complete");
+        // console.log("Purchase complete");
         this.router.navigate(['/'])
       }
       else {
-        console.log("Purchase failed");
+        // console.log("Purchase failed");
       }
     })
   }

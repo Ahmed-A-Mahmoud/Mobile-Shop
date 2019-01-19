@@ -4,6 +4,7 @@ import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { User } from '../Models/user.model';
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +17,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   @ViewChild('addressform') addressForm: NgForm;
   @ViewChild('phoneform') phoneForm: NgForm;
   userSubscription: Subscription
-  user = {};
+  user : User;
   isWalletManaged = false;
   showAddressFrom = false;
   showPhoneFrom = false;
@@ -24,7 +25,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.userSubscription = this.afDatabase.object(`Users/Regular/${this.shareService.getData("userId")}`).snapshotChanges().subscribe(userdata => {
       if (userdata.payload.exists()) {
-        this.user = userdata.payload.val()
+        this.user = <User>userdata.payload.val()
       }
     })
   }
