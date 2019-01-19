@@ -35,11 +35,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
   Deposit() {
     let walletRef = this.afDatabase.database.ref(`Users/Regular/${this.shareService.getData("userId")}/Wallet`)
     walletRef.set(this.user['Wallet'] + Number(this.depositForm.value['deposit value']))
+    this.depositForm.reset()
   }
   Withdrawal() {
     if (this.user['Wallet'] >= Number(this.withdrawForm.value['withdraw value'])) {
       let walletRef = this.afDatabase.database.ref(`Users/Regular/${this.shareService.getData("userId")}/Wallet`)
       walletRef.set(this.user['Wallet'] - Number(this.withdrawForm.value['withdraw value']))
+      this.withdrawForm.reset()
     }
     else {
       this.withdrawForm.reset()

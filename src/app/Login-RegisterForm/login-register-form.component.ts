@@ -2,9 +2,9 @@ import { SharingService } from './../Services/SharingService.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../Models/user.model';
 import { NgForm } from '@angular/forms';
 import * as firebase from 'firebase'
-import { User } from '../Models/user.model';
 
 @Component({
   selector: 'app-login-register-form',
@@ -18,11 +18,15 @@ export class LoginRegisterFormComponent implements OnInit {
   isLoggedin = false;
   isSubmitted = false;
   errorMessage = ''
-  constructor(public route: ActivatedRoute, public afDatabase: AngularFireDatabase, public shareService: SharingService, public router: Router) { }
+  constructor(public route: ActivatedRoute, public afDatabase: AngularFireDatabase, public shareService: SharingService, public router: Router) { 
+    this.user = new User('','','','','',0,[])
+  }
   ngOnInit() {
   }
   Login() {
     this.isSubmitted = true;
+    console.log(this.user);
+    
     this.user.Email = this.loginForm.value["login email"]
     firebase.auth().signInWithEmailAndPassword(this.loginForm.value['login email'], this.loginForm.value['login password'])
       .then(UserCredential => {
