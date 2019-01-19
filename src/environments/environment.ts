@@ -3,16 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
-};
-
-export const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyDVR8PBBsHBhZkxGNvMtZuQQySiifj9ajM",
-  authDomain: "mobile-shop-39051.firebaseapp.com",
-  databaseURL: "https://mobile-shop-39051.firebaseio.com",
-  projectId: "mobile-shop-39051",
-  storageBucket: "",
-  messagingSenderId: "202681394749"
+  production: false,
+  FIREBASE_CONFIG : {
+    apiKey: "AIzaSyDVR8PBBsHBhZkxGNvMtZuQQySiifj9ajM",
+    authDomain: "mobile-shop-39051.firebaseapp.com",
+    databaseURL: "https://mobile-shop-39051.firebaseio.com",
+    projectId: "mobile-shop-39051",
+    storageBucket: "",
+    messagingSenderId: "202681394749"
+  }
 };
 
 /*

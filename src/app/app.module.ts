@@ -1,5 +1,5 @@
 import { DropdownDirective } from './Shared/dropdownToggler.directive';
-import { FIREBASE_CONFIG } from './../environments/environment';
+import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
@@ -35,7 +35,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireModule.initializeApp(environment.FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
