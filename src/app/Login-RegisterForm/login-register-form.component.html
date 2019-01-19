@@ -22,7 +22,7 @@
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                     {{ errorMessage }}
                 </div>
-                <form (ngSubmit)="onLogin()" #loginform="ngForm">
+                <form (ngSubmit)="Login()" #loginform="ngForm">
                     <div class="form-group">
                         <label for="email">
                             <h4><b>E-mail</b></h4>
@@ -44,7 +44,7 @@
                 </form>
             </div>
             <div *ngIf="route.snapshot.params['tab'] === 'register'">
-                <form (ngSubmit)="onRegistration()" #registrationform="ngForm">
+                <form (ngSubmit)="Registration()" #registrationform="ngForm">
                     <div class="form-group">
                         <label for="firstname">
                             <h4><b>*First name</b></h4>

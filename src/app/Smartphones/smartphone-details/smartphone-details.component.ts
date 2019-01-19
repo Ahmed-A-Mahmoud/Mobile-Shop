@@ -24,7 +24,7 @@ export class SmartphoneDetailsComponent implements OnInit {
       }
     })
   }
-  onPurchase() {
+  Purchase() {
     this.afDatabase.database.ref(`Users/Regular/${this.shareService.getData("userId")}/Wallet`).once('value').then(wallet => {
       if (this.smartphone.approx_price_EUR <= wallet.val()) {
         wallet.ref.set(wallet.val() - parseInt(this.smartphone.approx_price_EUR))

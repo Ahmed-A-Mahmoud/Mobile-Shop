@@ -27,7 +27,7 @@ export class LoginRegisterFormComponent implements OnInit {
   constructor(private route: ActivatedRoute, private afDatabase: AngularFireDatabase, private shareService: SharingService, private router: Router) { }
   ngOnInit() {
   }
-  onLogin() {
+  Login() {
     this.isSubmitted = true;
     this.user.Email = this.loginForm.value["login email"]
     firebase.auth().signInWithEmailAndPassword(this.loginForm.value['login email'], this.loginForm.value['login password'])
@@ -47,7 +47,7 @@ export class LoginRegisterFormComponent implements OnInit {
       });
     this.loginForm.reset();
   }
-  onRegistration() {
+  Registration() {
     this.isSubmitted = true;
     this.user.Firstname = this.registrationForm.value["firstname"]
     this.user.Lastname = this.registrationForm.value["lastname"]

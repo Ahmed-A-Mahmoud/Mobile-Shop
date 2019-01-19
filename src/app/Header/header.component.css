@@ -26,8 +26,15 @@
 .glyphicon.glyphicon-chevron-left{
     font-size: 17px
 }
-.glyphicon.glyphicon-menu-hamburger{
+.glyphicon.glyphicon-chevron-left:hover{
+    background-color: green;
+    border-radius: 50% 
+}.glyphicon.glyphicon-menu-hamburger{
     font-size: 17px
+}
+.glyphicon.glyphicon-menu-hamburger:hover{
+    background-color: green;
+    border-radius: 50% 
 }
 .nav.navbar-nav.navbar-right .dropdown .dropdown-toggle{
     background-color: black;

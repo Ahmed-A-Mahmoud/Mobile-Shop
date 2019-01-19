@@ -13,6 +13,8 @@ import { SmartphoneDetailsComponent } from './Smartphones/smartphone-details/sma
 import { SharingService } from './Services/SharingService.service';
 import { LoginRegisterFormComponent } from './Login-RegisterForm/login-register-form.component';
 import { ProfileComponent } from './Profile/profile.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatToolbarModule,MatCheckboxModule} from '@angular/material';
 
 const appRoutes: Routes = [
   { path: '', component: SmartphonesThumbnailsComponent },
@@ -36,7 +38,10 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatCheckboxModule
   ],
   providers: [SharingService],
   bootstrap: [AppComponent]

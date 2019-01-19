@@ -1,18 +1,37 @@
 <div class="container-fluid">
   <div class="row">
-    <div *ngFor="let smartphone of smartphones">
-      <div class="col-sm-3">
-        <div class="thumbnail border">
-          <a (click)="onPhoneViewed(smartphone)">
-            <img src="{{ smartphone.img_url }}">
-            <div class=" caption">
-              <div class="text-center">
-                <h3>{{ smartphone.brand + ' ' + smartphone.model }}</h3>
-              </div>
-            </div>
-          </a>
+    <div class="col-sm-3">
+      <mat-toolbar>
+        <span>Brands</span>
+      </mat-toolbar>
+      <div class="col-sm-6">
+        <div *ngFor="let brand of brands;let i = index">
+          <mat-checkbox *ngIf="i<brands.length/2" name="{{brand.name}}" (change)="toggle($event)">{{brand.name}}</mat-checkbox>
         </div>
       </div>
+      <div class="col-sm-6">
+        <div *ngFor="let brand of brands;let i = index">
+          <mat-checkbox *ngIf="i>=brands.length/2" name="{{brand.name}}" (change)="toggle($event)">{{brand.name}}</mat-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <table class="table borderless">
+        <tr *ngFor="let row of filteredsmartphones.slice(0,filteredsmartphones.length/3+1); let i = index">
+          <td *ngFor="let smartphone of filteredsmartphones.slice(i*3,i*3+3)">
+            <div class="thumbnail border">
+              <a (click)="ViewPhone(smartphone)">
+                <img src="{{ smartphone.img_url }}">
+                <div class=" caption">
+                  <div class="text-center">
+                    <h3>{{ smartphone.brand + ' ' + smartphone.model }}</h3>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>

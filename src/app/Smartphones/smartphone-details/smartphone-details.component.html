@@ -141,9 +141,10 @@
     </div>
     <div class="col-xs-6">
       <img src="{{smartphone.img_url}}" class="center-block img-responsive">
+      <h3 class="text-center">{{ smartphone.brand + ' ' + smartphone.model }}</h3>
       <br>
       <div *ngIf="userstatus == 'loggedin'">
-        <button (click)="onPurchase()" class="center-block" role="button">
+        <button (click)="Purchase()" class="center-block" role="button">
           Purchase
           <span class="glyphicon glyphicon-eur" aria-hidden="true"></span></button>
         <br>

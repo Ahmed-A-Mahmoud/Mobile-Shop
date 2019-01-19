@@ -5,10 +5,24 @@
       <p>{{user.Firstname}} {{user.Lastname}}</p>
       <h4><b>Address</b></h4>
       <p>{{user.Address}}</p>
-      <button routerLink="/" *ngIf="!user.Address">Add Address</button>
+      <button *ngIf="!user.Address && !showAddressFrom" (click)="toggleAddAddress()">Add Address</button>
+      <button *ngIf="!user.Address && showAddressFrom" (click)="toggleAddAddress()">Remove Address</button>
+      <form (ngSubmit)="addAddress()" #addressform="ngForm" *ngIf="!user.Address && showAddressFrom">
+        <div class="form-group">
+          <input type="text" required ngModel name="address">
+          <button class="btn submit-button" type="submit" [disabled]="addressform.invalid">Update</button>
+        </div>
+      </form>
       <h4><b>Phone</b></h4>
-      <button routerLink="/" *ngIf="!user.Phone">Add Phone</button>
       <p>{{user.Phone}}</p>
+      <button *ngIf="!user.Phone && !showPhoneFrom" (click)="toggleAddPhone()">Add Phone</button>
+      <button *ngIf="!user.Phone && showPhoneFrom" (click)="toggleAddPhone()">Remove Phone</button>
+      <form (ngSubmit)="addPhone()" #phoneform="ngForm" *ngIf="!user.Phone && showPhoneFrom">
+        <div class="form-group">
+          <input type="text" required ngModel name="phone">
+          <button class="btn submit-button" type="submit" [disabled]="phoneform.invalid">Update</button>
+        </div>
+      </form>
       <h4><b>E-mail</b></h4>
       <p>{{user.Email}}</p>
     </div>
@@ -23,7 +37,7 @@
       <br>
       <div *ngIf="isWalletManaged">
         <div class="col-xs-3">
-          <form (ngSubmit)="onDeposit()" #depositform="ngForm">
+          <form (ngSubmit)="Deposit()" #depositform="ngForm">
             <div class="form-group">
               <label for="deposit value">
                 <b>Deposit value</b>
@@ -38,7 +52,7 @@
         </div>
         <div class="col-xs-3"></div>
         <div class="col-xs-3">
-          <form (ngSubmit)="onWithdraw()" #withdrawform="ngForm">
+          <form (ngSubmit)="Withdrawal()" #withdrawform="ngForm">
             <div class="form-group">
               <label for="withdraw value">
                 <b>Withdraw value</b>
@@ -65,7 +79,7 @@
         </tr>
         <tr *ngFor="let purchase of user.Purchases">
           <td style="text-align: center">
-            <a (click)="onPhoneViewed(smartphone)">
+            <a (click)="ViewPhone(purchase)">
               <img src="{{purchase.img_url}}">
             </a>
           </td>
