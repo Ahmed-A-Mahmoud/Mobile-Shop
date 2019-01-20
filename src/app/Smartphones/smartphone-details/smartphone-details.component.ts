@@ -3,6 +3,7 @@ import { Smartphone } from './../../Models/smartphone.model';
 import { Component, OnInit } from '@angular/core';
 import { SharingService } from 'src/app/Services/SharingService.service';
 import { Router } from '@angular/router';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 
 @Component({
   selector: 'app-smartphone-details',
@@ -13,19 +14,22 @@ export class SmartphoneDetailsComponent implements OnInit {
   smartphone: Smartphone;
   userWallet: number;
   userstatus: string;
-  constructor(public shareService: SharingService, public afDatabase: AngularFireDatabase, public router: Router) { }
+  constructor(public shareService: SharingService, public afDatabase: AngularFireDatabase, public router: Router, public snack: MatSnackBar) { }
 
   ngOnInit() {
     this.smartphone = this.shareService.getData("selectedSmartphone")
     this.userstatus = this.shareService.getData("userStatus")
-    this.afDatabase.database.ref(`Users/Regular/${this.shareService.getData("userId")}/Wallet`).once('value').then(wallet=>{
-      if(wallet.exists()){
+    this.afDatabase.database.ref(`Users/Regular/${this.shareService.getData("userId")}/Wallet`).once('value').then(wallet => {
+      if (wallet.exists()) {
         this.userWallet = wallet.val()
       }
     })
   }
   Purchase() {
     this.afDatabase.database.ref(`Users/Regular/${this.shareService.getData("userId")}/Wallet`).once('value').then(wallet => {
+      let snackConfig = new MatSnackBarConfig()
+      snackConfig.panelClass = ['black-snackbar']
+      snackConfig.duration = 5000
       if (this.smartphone.approx_price_EUR <= wallet.val()) {
         wallet.ref.set(wallet.val() - parseInt(this.smartphone.approx_price_EUR))
         let purchase = {
@@ -38,15 +42,15 @@ export class SmartphoneDetailsComponent implements OnInit {
           if (purchases.exists()) {
             purchases.ref.child(`${purchases.numChildren()}`).set(purchase)
           }
-          else{
+          else {
             purchases.ref.child("0").set(purchase)
           }
         })
-        // console.log("Purchase complete");
+        this.snack.open(`Congratulations! You just bought ${this.smartphone.brand + ' ' + this.smartphone.model}`, null, snackConfig)
         this.router.navigate(['/'])
       }
       else {
-        // console.log("Purchase failed");
+        this.snack.open(`Oops! Looks like you don't have enough money to buy ${this.smartphone.brand + ' ' + this.smartphone.model}`, null, snackConfig)
       }
     })
   }

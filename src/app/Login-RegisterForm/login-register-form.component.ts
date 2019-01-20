@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../Models/user.model';
 import { NgForm } from '@angular/forms';
 import * as firebase from 'firebase'
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 
 @Component({
   selector: 'app-login-register-form',
@@ -14,26 +15,30 @@ import * as firebase from 'firebase'
 export class LoginRegisterFormComponent implements OnInit {
   @ViewChild('loginform') loginForm: NgForm;
   @ViewChild('registrationform') registrationForm: NgForm;
-  user : User;
+  user: User;
   isLoggedin = false;
   isSubmitted = false;
   errorMessage = ''
-  constructor(public route: ActivatedRoute, public afDatabase: AngularFireDatabase, public shareService: SharingService, public router: Router) { 
-    this.user = new User('','','','','',0,[])
+  snackConfig = new MatSnackBarConfig()
+  constructor(public route: ActivatedRoute, public afDatabase: AngularFireDatabase, public shareService: SharingService, public router: Router, public snack: MatSnackBar) {
+    this.user = new User('', '', '', '', '', 0, [])
+    this.snackConfig.panelClass = ['black-snackbar']
+    this.snackConfig.duration = 5000
   }
   ngOnInit() {
   }
   Login() {
     this.isSubmitted = true;
-    console.log(this.user);
-    
     this.user.Email = this.loginForm.value["login email"]
     firebase.auth().signInWithEmailAndPassword(this.loginForm.value['login email'], this.loginForm.value['login password'])
       .then(UserCredential => {
-        this.shareService.setData('userId', UserCredential.user.uid)
-        this.shareService.setData('userStatus', 'loggedin')
-        this.isLoggedin = true;
-        this.router.navigate([''])
+        this.afDatabase.database.ref(`Users/Regular/${UserCredential.user.uid}`).once('value').then(user => {
+          this.shareService.setData('userId', UserCredential.user.uid)
+          this.shareService.setData('userStatus', 'loggedin')
+          this.isLoggedin = true;
+          this.snack.open(`Welcome, ${user.child('Firstname').val() + ' ' + user.child('Lastname').val()}!`, null, this.snackConfig)
+          this.router.navigate(['/'])
+        })
       })
       .catch(error => {
         if (error.code === "auth/user-not-found") {
@@ -58,10 +63,13 @@ export class LoginRegisterFormComponent implements OnInit {
         this.shareService.setData('userId', UserCredential.user.uid)
         this.shareService.setData('userStatus', 'loggedin')
         this.isLoggedin = true;
-        this.router.navigate([''])
+        this.snack.open(`Welcome, ${this.user.Firstname + ' ' + this.user.Lastname}!`, null, this.snackConfig)
+        this.router.navigate(['/'])
       })
       .catch(error => {
-        console.log(error);
+        if (error.code === "auth/email-already-in-use") {
+          this.snack.open('This e-mail is already used. Please sign up with a different e-mail', null, this.snackConfig)
+        }
       });
     this.registrationForm.reset();
   }

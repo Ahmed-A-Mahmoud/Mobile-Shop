@@ -14,7 +14,7 @@ import { SharingService } from './Services/SharingService.service';
 import { LoginRegisterFormComponent } from './Login-RegisterForm/login-register-form.component';
 import { ProfileComponent } from './Profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatToolbarModule,MatCheckboxModule} from '@angular/material';
+import {MatToolbarModule,MatCheckboxModule,MatSnackBarModule} from '@angular/material';
 
 const appRoutes: Routes = [
   { path: '', component: SmartphonesThumbnailsComponent },
@@ -41,7 +41,8 @@ const appRoutes: Routes = [
     FormsModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSnackBarModule
   ],
   providers: [SharingService],
   bootstrap: [AppComponent]

@@ -10,3 +10,10 @@ button{
     border-radius: 15px;
     font-size: 20px
 }
+::ng-deep snack-bar-container.black-snackbar {
+    background: black;
+  }
+  
+  ::ng-deep .black-snackbar .mat-simple-snackbar {
+    color: white;
+  }
