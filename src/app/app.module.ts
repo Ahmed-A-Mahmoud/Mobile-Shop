@@ -14,7 +14,7 @@ import { SharingService } from './Services/SharingService.service';
 import { LoginRegisterFormComponent } from './Login-RegisterForm/login-register-form.component';
 import { ProfileComponent } from './Profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatCheckboxModule, MatSnackBarModule, MatCardModule } from '@angular/material';
+import { MatCheckboxModule, MatSnackBarModule, MatCardModule, MatProgressSpinnerModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { NgxPaginationModule } from 'ngx-pagination'
 const appRoutes: Routes = [
@@ -41,10 +41,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
     MatCheckboxModule,
     MatSnackBarModule,
     MatCardModule,
+    MatProgressSpinnerModule,
     FlexLayoutModule,
     NgxPaginationModule
   ],

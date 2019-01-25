@@ -1,19 +1,21 @@
 <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxLayout.xs="column">
   <div fxFlex="30" fxLayout="column" fxLayoutAlign="start stretch">
-    <div class="brands-filter" fxLayoutAlign="start center">
-      <b>
-        <h3>Brands</h3>
-      </b>
+    <div class="brands-filter">
+      <div fxFlex="30">
+        <b>
+          <h3>Brands</h3>
+        </b>
+      </div>
+      <div fxFlex="70" fxLayoutAlign="center center">
+        <input type="text" [(ngModel)]="searchValue" (keyup)="searchPhones()" placeholder="Search for a product..." [disabled]="checkBrands()">
+      </div>
     </div>
-    <div fxFlex="90">
-      <div fxLayout="row wrap" fxLayoutAlign="start stretch">
-        <div fxLayout="column" fxFlex="50">
-          <mat-checkbox *ngFor="let brand of brands.slice(0,brands.length/2+1);" name="{{brand.name}}" (change)="toggle($event)">{{brand.name}}</mat-checkbox>
-        </div>
-        <div fxLayout="column" fxFlex="50">
-          <mat-checkbox *ngFor="let brand of brands.slice(brands.length/2+1,brands.length);" name="{{brand.name}}"
-            (change)="toggle($event)">{{brand.name}}</mat-checkbox>
-        </div>
+    <div fxLayout="row wrap" fxLayoutAlign="start stretch">
+      <div fxLayout="column" fxFlex="50">
+        <mat-checkbox *ngFor="let brand of brands.slice(0,brands.length/2);" name="{{brand.name}}" (change)="toggle($event)">{{brand.name}}</mat-checkbox>
+      </div>
+      <div fxLayout="column" fxFlex="50">
+        <mat-checkbox *ngFor="let brand of brands.slice(brands.length/2,brands.length);" name="{{brand.name}}" (change)="toggle($event)">{{brand.name}}</mat-checkbox>
       </div>
     </div>
   </div>
@@ -25,6 +27,7 @@
         <h3 class=" caption text-center">{{ smartphone.brand + ' ' + smartphone.model }}</h3>
       </mat-card>
     </div>
-    <pagination-controls class="text-center block" (pageChange)="p = $event"></pagination-controls>
+    <mat-spinner *ngIf="filteredsmartphones.length == 0" class="center-block"></mat-spinner>
+    <pagination-controls *ngIf="filteredsmartphones.length !== 0" class="text-center block" (pageChange)="p = $event"></pagination-controls>
   </div>
 </div>

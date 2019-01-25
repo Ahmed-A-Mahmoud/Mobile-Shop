@@ -17,6 +17,10 @@ mat-card{
     color: white;
     font-size: 35%;
 }
+.brands-filter input{
+    color: black;
+    font-size: 400%;
+}
 h3{
     padding: 15%;
     margin: 0%
