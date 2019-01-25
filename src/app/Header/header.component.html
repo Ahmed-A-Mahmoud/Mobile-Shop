@@ -1,20 +1,24 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <b><a routerLink="" class="navbar-brand">Mobile Shop</a></b>
+<!-- Hidden on Medium devices or less -->
+<div fxLayout="row wrap" fxLayoutAlign="start stretch" style="background-color: black" fxHide.lt-md>
+  <div fxFlex="33">
+    <ul class="nav navbar-nav" *ngIf="router.url !== '/'">
+      <li>
+        <a (click)="onBackClicked()">
+          <span class="glyphicon glyphicon-chevron-left" data-toggle="modal" role="button" aria-hidden="true"
+            aria-label="back">
+          </span>
+          <label for="back">Back</label>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div fxFlex="33">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <b><a  class="navbrand" routerLink="">Mobile Shop</a></b>
     </div>
-
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav" *ngIf="router.url !== '/'">
-        <li>
-          <a (click)="onBackClicked()">
-            <span class="glyphicon glyphicon-chevron-left" data-toggle="modal" role="button" aria-hidden="true"
-              aria-label="back">
-            </span>
-            <label for="back">Back</label>
-          </a>
-        </li>
-      </ul>
+  </div>
+  <div fxFlex="33">
+    <div fxLayout="row" fxLayoutAlign="end">
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="showOptions()" class="dropdown" dropdown-status>
           <a class="dropdown-toggle" role="button">
@@ -30,4 +34,24 @@
       </ul>
     </div>
   </div>
-</nav>
+</div>
+<!-- Hidden on Smaller devices or greater -->
+<div fxLayout="column wrap" fxLayoutAlign="start stretch" style="background-color: black" fxHide.gt-sm>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <b><a  class="navbrand" routerLink="">Mobile Shop</a></b>
+    <ul class="nav navbar-nav navbar-right">
+      <li *ngIf="showOptions()" class="dropdown" dropdown-status>
+        <a class="dropdown-toggle" role="button">
+          <span class="glyphicon glyphicon-menu-hamburger" role="button"></span>
+        </a>
+        <ul class="dropdown-menu border">
+          <li><a routerLink="/profile" id="Profile">Profile</a></li>
+          <hr class="border-line">
+          <li><a (click)="onLogout()" id="Logout">Log out</a></li>
+        </ul>
+      </li>
+      <li *ngIf="showLoginRegister()"><a id="Login-Register" routerLink="login-register/login">Login / Register</a></li>
+    </ul>
+  </div>
+</div>
+<br>

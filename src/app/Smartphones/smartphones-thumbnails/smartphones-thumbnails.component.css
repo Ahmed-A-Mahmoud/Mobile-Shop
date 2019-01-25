@@ -1,6 +1,6 @@
 .border{
     border: 3px solid black;
-    border-radius: 15px
+    border-radius: 15px;
 }
 .border:hover{
     border: 3px solid green;
@@ -8,10 +8,16 @@
 }
 ::ng-deep .mat-checkbox .mat-checkbox-frame {
     border-color: black;
-  }
-  .borderless td {
-    border: none;
 }
-a{
-    cursor: pointer
+mat-card{
+    cursor: pointer;
+}
+.brands-filter{
+    background-color: black;
+    color: white;
+    font-size: 35%;
+}
+h3{
+    padding: 15%;
+    margin: 0%
 }

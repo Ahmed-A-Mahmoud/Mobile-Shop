@@ -1,146 +1,144 @@
-<!--Testing-->
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-6">
-      <table class="table table-bordered table-responsive">
-        <tr>
-          <th class="text-center" colspan="3">Specifications</th>
-        </tr>
-        <tr>
-          <th>Network</th>
-          <td>Technology</td>
-          <td>{{smartphone.network_technology}}</td>
-        </tr>
-        <tr>
-          <th rowspan="2">Launch</th>
-          <td>Announced</td>
-          <td>{{smartphone.announced}}</td>
-        </tr>
-        <tr>
-          <td>Status</td>
-          <td>{{smartphone.status}}</td>
-        </tr>
-        <tr>
-          <th rowspan="3">Body</th>
-          <td>Dimensions</td>
-          <td>{{smartphone.dimentions}}</td>
-        </tr>
-        <tr>
-          <td>Weight</td>
-          <td>{{smartphone.weight_g}} g ({{smartphone.weight_oz}} oz)</td>
-        </tr>
-        <tr>
-          <td>SIM</td>
-          <td>{{smartphone.SIM}}</td>
-        </tr>
-        <tr>
-          <th rowspan="3">Display</th>
-          <td>Type</td>
-          <td>{{smartphone.display_type}}</td>
-        </tr>
-        <tr>
-          <td>Size</td>
-          <td>{{smartphone.display_size}}</td>
-        </tr>
-        <tr>
-          <td>Resolution</td>
-          <td>{{smartphone.display_resolution}}</td>
-        </tr>
-        <tr>
-          <th rowspan="4">Platform</th>
-          <td>OS</td>
-          <td>{{smartphone.OS}}</td>
-        </tr>
-        <tr>
-          <td>Chipset</td>
-          <td>{{smartphone.Chipset}}</td>
-        </tr>
-        <tr>
-          <td>CPU</td>
-          <td>{{smartphone.CPU}}</td>
-        </tr>
-        <tr>
-          <td>GPU</td>
-          <td>{{smartphone.GPU}}</td>
-        </tr>
-        <tr>
-          <th rowspan="2">Memory</th>
-          <td>Card slot</td>
-          <td>{{smartphone.memory_card}}</td>
-        </tr>
-        <tr>
-          <td>Internal</td>
-          <td>{{smartphone.internal_memory}}, {{smartphone.RAM}}</td>
-        </tr>
-        <tr>
-          <th>Main <br> Camera</th>
-          <td>Single</td>
-          <td>{{smartphone['primary_camera'].split('|')}}</td>
-        </tr>
-        <tr>
-        <tr>
-          <th rowspan="2">Selfie <br> Camera</th>
-          <td>Single</td>
-          <td>{{smartphone['secondary_camera'].split('|')[0]}}</td>
-        </tr>
-        <tr>
-          <td>Video</td>
-          <td>{{smartphone['secondary_camera'].split('|')[1]}}</td>
-        </tr>
-        <tr>
-          <th rowspan="2">Sound</th>
-          <td>Loudspeaker</td>
-          <td>{{smartphone.loud_speaker}}</td>
-        </tr>
-        <tr>
-          <td>3.5mm jack</td>
-          <td>{{smartphone.audio_jack}}</td>
-        </tr>
-        <tr>
-          <th rowspan="5">Comms</th>
-          <td>WLAN</td>
-          <td>{{smartphone.WLAN}}</td>
-        </tr>
-        <tr>
-          <td>Bluetooth</td>
-          <td>{{smartphone.bluetooth}}</td>
-        </tr>
-        <tr>
-          <td>GPS</td>
-          <td>{{smartphone.GPS}}</td>
-        </tr>
-        <tr>
-          <td>Radio</td>
-          <td>{{smartphone.radio}}</td>
-        </tr>
-        <tr>
-          <td>USB</td>
-          <td>{{smartphone.USB}}</td>
-        </tr>
-        <tr>
-          <th>Features</th>
-          <td>Sensors</td>
-          <td>{{smartphone.sensors}}</td>
-        </tr>
-        <tr>
-          <th>Battery</th>
-          <td></td>
-          <td>{{smartphone.battery}}</td>
-        </tr>
-        <tr>
-          <th rowspan="2">Misc</th>
-          <td>Colors</td>
-          <td>{{smartphone.colors}}</td>
-        </tr>
-        <tr>
-          <td>Price</td>
-          <td>~ {{smartphone.approx_price_EUR}}€</td>
-        </tr>
-        <!--Continue the rest later-->
-      </table>
-    </div>
-    <div class="col-xs-6">
-      <img src="{{smartphone.img_url}}" class="center-block img-responsive">
+<div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column">
+  <div fxFlex="50">
+    <table class="table table-bordered table-responsive">
+      <tr>
+        <th class="text-center" colspan="3">Specifications</th>
+      </tr>
+      <tr>
+        <th>Network</th>
+        <td>Technology</td>
+        <td>{{smartphone.network_technology}}</td>
+      </tr>
+      <tr>
+        <th rowspan="2">Launch</th>
+        <td>Announced</td>
+        <td>{{smartphone.announced}}</td>
+      </tr>
+      <tr>
+        <td>Status</td>
+        <td>{{smartphone.status}}</td>
+      </tr>
+      <tr>
+        <th rowspan="3">Body</th>
+        <td>Dimensions</td>
+        <td>{{smartphone.dimentions}}</td>
+      </tr>
+      <tr>
+        <td>Weight</td>
+        <td>{{smartphone.weight_g}} g ({{smartphone.weight_oz}} oz)</td>
+      </tr>
+      <tr>
+        <td>SIM</td>
+        <td>{{smartphone.SIM}}</td>
+      </tr>
+      <tr>
+        <th rowspan="3">Display</th>
+        <td>Type</td>
+        <td>{{smartphone.display_type}}</td>
+      </tr>
+      <tr>
+        <td>Size</td>
+        <td>{{smartphone.display_size}}</td>
+      </tr>
+      <tr>
+        <td>Resolution</td>
+        <td>{{smartphone.display_resolution}}</td>
+      </tr>
+      <tr>
+        <th rowspan="4">Platform</th>
+        <td>OS</td>
+        <td>{{smartphone.OS}}</td>
+      </tr>
+      <tr>
+        <td>Chipset</td>
+        <td>{{smartphone.Chipset}}</td>
+      </tr>
+      <tr>
+        <td>CPU</td>
+        <td>{{smartphone.CPU}}</td>
+      </tr>
+      <tr>
+        <td>GPU</td>
+        <td>{{smartphone.GPU}}</td>
+      </tr>
+      <tr>
+        <th rowspan="2">Memory</th>
+        <td>Card slot</td>
+        <td>{{smartphone.memory_card}}</td>
+      </tr>
+      <tr>
+        <td>Internal</td>
+        <td>{{smartphone.internal_memory}}, {{smartphone.RAM}}</td>
+      </tr>
+      <tr>
+        <th>Main <br> Camera</th>
+        <td>Single</td>
+        <td>{{smartphone['primary_camera'].split('|')}}</td>
+      </tr>
+      <tr>
+      <tr>
+        <th rowspan="2">Selfie <br> Camera</th>
+        <td>Single</td>
+        <td>{{smartphone['secondary_camera'].split('|')[0]}}</td>
+      </tr>
+      <tr>
+        <td>Video</td>
+        <td>{{smartphone['secondary_camera'].split('|')[1]}}</td>
+      </tr>
+      <tr>
+        <th rowspan="2">Sound</th>
+        <td>Loudspeaker</td>
+        <td>{{smartphone.loud_speaker}}</td>
+      </tr>
+      <tr>
+        <td>3.5mm jack</td>
+        <td>{{smartphone.audio_jack}}</td>
+      </tr>
+      <tr>
+        <th rowspan="5">Comms</th>
+        <td>WLAN</td>
+        <td>{{smartphone.WLAN}}</td>
+      </tr>
+      <tr>
+        <td>Bluetooth</td>
+        <td>{{smartphone.bluetooth}}</td>
+      </tr>
+      <tr>
+        <td>GPS</td>
+        <td>{{smartphone.GPS}}</td>
+      </tr>
+      <tr>
+        <td>Radio</td>
+        <td>{{smartphone.radio}}</td>
+      </tr>
+      <tr>
+        <td>USB</td>
+        <td>{{smartphone.USB}}</td>
+      </tr>
+      <tr>
+        <th>Features</th>
+        <td>Sensors</td>
+        <td>{{smartphone.sensors}}</td>
+      </tr>
+      <tr>
+        <th>Battery</th>
+        <td></td>
+        <td>{{smartphone.battery}}</td>
+      </tr>
+      <tr>
+        <th rowspan="2">Misc</th>
+        <td>Colors</td>
+        <td>{{smartphone.colors}}</td>
+      </tr>
+      <tr>
+        <td>Price</td>
+        <td>~ {{smartphone.approx_price_EUR}}€</td>
+      </tr>
+    </table>
+  </div>
+  <div fxFlex="50" class="center-block">
+    <div fxLayout="column" fxLayoutAlign="start center">
+      <img src="{{smartphone.img_url}}">
       <h3 class="text-center">{{ smartphone.brand + ' ' + smartphone.model }}</h3>
       <br>
       <div *ngIf="userstatus == 'loggedin'">
@@ -148,8 +146,7 @@
           Purchase
           <span class="glyphicon glyphicon-eur" aria-hidden="true"></span></button>
         <br>
-        <div class="col-xs-3"></div>
-        <div class="alert alert-info text-center col-xs-6" role="alert">
+        <div class="alert alert-info text-center" role="alert">
           <strong> Note:</strong> You currently have <b>{{userWallet}}€</b> in your wallet
         </div>
       </div>

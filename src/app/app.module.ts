@@ -14,8 +14,9 @@ import { SharingService } from './Services/SharingService.service';
 import { LoginRegisterFormComponent } from './Login-RegisterForm/login-register-form.component';
 import { ProfileComponent } from './Profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatToolbarModule,MatCheckboxModule,MatSnackBarModule} from '@angular/material';
-
+import { MatToolbarModule, MatCheckboxModule, MatSnackBarModule, MatCardModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout'
+import { NgxPaginationModule } from 'ngx-pagination'
 const appRoutes: Routes = [
   { path: '', component: SmartphonesThumbnailsComponent },
   { path: 'details', component: SmartphoneDetailsComponent },
@@ -42,7 +43,10 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatToolbarModule,
     MatCheckboxModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule,
+    FlexLayoutModule,
+    NgxPaginationModule
   ],
   providers: [SharingService],
   bootstrap: [AppComponent]

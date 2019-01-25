@@ -1,14 +1,7 @@
-.navbar
-{
-    background-color:black;
+.navbrand{
+    font-size: 40px;
+    color: white
 }
-.navbar-brand {
-    transform: translateX(-50%);
-    left: 50%;
-    position: absolute;
-    color: white;
-    font-size: 30px
-  }
 .nav.navbar-nav.navbar-right #Login-Register {
     background-color: green;
     color: white;

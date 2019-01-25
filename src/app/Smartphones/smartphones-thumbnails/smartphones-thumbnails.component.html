@@ -1,37 +1,30 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-3">
-      <mat-toolbar>
-        <span>Brands</span>
-      </mat-toolbar>
-      <div class="col-sm-6">
-        <div *ngFor="let brand of brands;let i = index">
-          <mat-checkbox *ngIf="i<brands.length/2" name="{{brand.name}}" (change)="toggle($event)">{{brand.name}}</mat-checkbox>
+<div fxLayout="row wrap" fxLayoutAlign="start stretch" fxLayout.xs="column">
+  <div fxFlex="30" fxLayout="column" fxLayoutAlign="start stretch">
+    <div class="brands-filter" fxLayoutAlign="start center">
+      <b>
+        <h3>Brands</h3>
+      </b>
+    </div>
+    <div fxFlex="90">
+      <div fxLayout="row wrap" fxLayoutAlign="start stretch">
+        <div fxLayout="column" fxFlex="50">
+          <mat-checkbox *ngFor="let brand of brands.slice(0,brands.length/2+1);" name="{{brand.name}}" (change)="toggle($event)">{{brand.name}}</mat-checkbox>
         </div>
-      </div>
-      <div class="col-sm-6">
-        <div *ngFor="let brand of brands;let i = index">
-          <mat-checkbox *ngIf="i>=brands.length/2" name="{{brand.name}}" (change)="toggle($event)">{{brand.name}}</mat-checkbox>
+        <div fxLayout="column" fxFlex="50">
+          <mat-checkbox *ngFor="let brand of brands.slice(brands.length/2+1,brands.length);" name="{{brand.name}}"
+            (change)="toggle($event)">{{brand.name}}</mat-checkbox>
         </div>
       </div>
     </div>
-    <div class="col-sm-9">
-      <table class="table borderless">
-        <tr *ngFor="let row of filteredsmartphones.slice(0,filteredsmartphones.length/3+1); let i = index">
-          <td *ngFor="let smartphone of filteredsmartphones.slice(i*3,i*3+3)">
-            <div class="thumbnail border">
-              <a (click)="ViewPhone(smartphone)">
-                <img src="{{ smartphone.img_url }}">
-                <div class=" caption">
-                  <div class="text-center">
-                    <h3>{{ smartphone.brand + ' ' + smartphone.model }}</h3>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </td>
-        </tr>
-      </table>
+  </div>
+  <div fxFlex="70">
+    <div fxLayout="row wrap" fxLayoutAlign="space-around start" fxLayout.xs="column" fxLayoutAlign.xs="start center">
+      <mat-card *ngFor="let smartphone of filteredsmartphones | paginate: { itemsPerPage: 15, currentPage: p }" class="thumbnail border"
+        (click)="ViewPhone(smartphone)" fxFlex="30" fxFlex.xs="100">
+        <img src="{{ smartphone.img_url }}">
+        <h3 class=" caption text-center">{{ smartphone.brand + ' ' + smartphone.model }}</h3>
+      </mat-card>
     </div>
+    <pagination-controls class="text-center block" (pageChange)="p = $event"></pagination-controls>
   </div>
 </div>

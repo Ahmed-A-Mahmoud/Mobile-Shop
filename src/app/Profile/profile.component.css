@@ -31,10 +31,6 @@ img{
 a{
     cursor: pointer;
 }
-.tabs{
-    width: 50%;
-    text-align: center
-}
 .submit-button{
     background-color: green;
     border-color: green;
